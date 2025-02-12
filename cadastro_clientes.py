@@ -1,38 +1,16 @@
 from tkinter import *
 import sqlite3 as sql
 import pandas as pd
+import os
 
-'''
-#Criar Banco de Dados
-conexao = sql.connect('clientes.db')
-
-c = conexao.cursor()
-
-c.execute(""" CREATE TABLE clientes (
-          nome text,
-          sobrenome text,
-          email text,
-          telefone text
-          )""")
-
-conexao.commit()
-
-conexao.close()
-'''
-
-'''
-conexao = sql.connect('clientes.db')
-c = conexao.cursor()
-
-#Excluir dados no banco de dados
-c.execute("DELETE FROM clientes")
-conexao.commit()
-conexao.close()
-'''
+sys_dir1 = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(sys_dir1, 'clientes.db')
+exc_path = os.path.join(sys_dir1, 'clientes.xlsx')    
 
 janela = Tk()
 janela.title('Cadastro de Clientes')
-janela.iconbitmap('C:/Users/gabri/Desktop/Gabriel/Ciencias da Computação/Projects/Python/Projects/ClientsData/ICONE.ICO')
+icon_path2 = os.path.join(sys_dir1, "ICONE.ico")
+janela.iconbitmap(icon_path2)
 janela.geometry()
 
 def cadastrar_clientes():
@@ -56,14 +34,15 @@ def cadastrar_clientes():
     entry_telefone.delete(0,"end")
 
 def exportar_clientes():
-    conexao = sql.connect('clientes.db')
+    conexao = sql.connect(db_path)
     c = conexao.cursor()
 
     #Exportar dados para o Excel
     c.execute("SELECT *, oid FROM clientes")
     clientes_cadastrados = c.fetchall()
     clientes_cadastrados = pd.DataFrame(clientes_cadastrados, columns= ['nome','sobrenome','email','telefone','Id_banco'])
-    clientes_cadastrados.to_excel('clientes.xlsx')
+          
+    clientes_cadastrados.to_excel(exc_path)
 
     conexao.commit()
     conexao.close()
