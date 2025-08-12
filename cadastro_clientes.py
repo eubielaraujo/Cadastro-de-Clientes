@@ -12,7 +12,7 @@ ctk.set_appearance_mode('light')
 
 login = ctk.CTk()
 login.title('LOGIN')
-icon_path1 = os.path.join(sys_dir1, "LOG_ICO.ICO")  # Caminho relativo
+icon_path1 = os.path.join(sys_dir1, "icones/LOG_ICO.ICO")  # Caminho relativo
 login.iconbitmap(icon_path1)
 login.geometry()
 
@@ -20,7 +20,7 @@ def janela_cadastro():
 
     janela = ctk.CTk()
     janela.title('Cadastro de Clientes')
-    icon_path2 = os.path.join(sys_dir1, "ICONE.ICO")  # Caminho relativo
+    icon_path2 = os.path.join(sys_dir1, "icones/ICONE.ICO")  # Caminho relativo
     janela.iconbitmap(icon_path2)
     janela.geometry('960x540')
 
