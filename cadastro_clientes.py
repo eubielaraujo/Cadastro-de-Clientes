@@ -5,8 +5,8 @@ import os
 
 #Caminhos Banco de Dados e Excel 
 sys_dir1 = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(sys_dir1, 'clientes.db')
-exc_path = os.path.join(sys_dir1, 'clientes.xlsx')    
+db_path = os.path.join(sys_dir1, 'dados/clientes.db')
+exc_path = os.path.join(sys_dir1, 'dados/clientes.xlsx')    
 
 ctk.set_appearance_mode('light')
 
